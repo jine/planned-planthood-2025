@@ -266,8 +266,8 @@ header {
   .newsletter-form {
     display: flex;
     flex-direction: row;
-    max-width: 40ch;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
   }
 
   input[type="email"] {
@@ -277,7 +277,7 @@ header {
     border-right: none; /* remove right border to merge with button */
     border-radius: 2rem 0 0 2rem;
     font-size: var(--fs-400);
-    background-color: var(--clr-neutral-200); /* input background */
+    background-color: var(--clr-neutral-100); /* input background */
     color: var(--clr-primary-dark); /* input text color */
 
     &:focus { /* focus styles */
@@ -304,27 +304,77 @@ header {
   }
 }
 
+/* shared styles for newsletter and ending section "images" */
 .newsletter-section .image,
 .ending-section .image {
-    width: 15rem;
-    height: 15rem;
-    background-color: var(--clr-accent);
-    border-radius: 50%; /* make it circular */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    grid-column: 2;
-    grid-row: 1;
+  width: 15rem;
+  height: 15rem;
+  background-color: var(--clr-accent);
+  border-radius: 50%; /* make it circular */
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  margin: auto; /* center in grid cell */
 
-    svg {
-      max-width: 8rem;
-      max-height: 8rem;
-      fill: var(--clr-primary-light-1);
-      stroke: var(--clr-primary-light-1);
-    }
+  /* SVG image inside the circle */
+  svg {
+    max-width: 8rem;
+    max-height: 8rem;
+    fill: var(--clr-primary-light-1);
+    stroke: var(--clr-primary-light-1);
   }
+}
 
+/* ending section is the bottom "hero", looks like newsletter but its icon is to the left */
+.ending-section {
+  display: grid; /* grid layout */
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  align-items: center; /* center items vertically */
+  justify-content: center; /* center items horizontally */
+  
+  .ending-left {
+    width: 50%; 
+    justify-self: start;  /* align to the left */
+    align-items: center; /* center vertically */
+  }
+  .ending-right {
+    width: 50%; 
+      justify-self: end; /* align to the right */
+
+      h2 {
+          margin-bottom: 1rem;
+      }
+      
+      p {
+          margin-bottom: 2rem;
+      }
+  }
+  
+  
+}
+
+/* Button styles */
+.btn {
+  display: inline-block; /* make it inline-block */
+  padding: 0.5rem 1rem; /* vertical and horizontal padding */
+  border-radius: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-green {
+    background-color: var(--clr-accent);
+    color: var(--clr-primary-light-1);
+    
+    &:hover,
+    &:focus-visible {
+        background-color: var(--clr-green-800);
+        text-decoration: none;
+    }
+}
+
+/* Image grid */
 .image-grid {
   display: grid;
   background-color: var(--clr-neutral-100);
@@ -380,12 +430,14 @@ header {
   }
 }
 
+/* grid container for plant cards */
 .plants-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1rem;
 }
 
+/* individual plant card styles */
 .plant-card {
   display: grid;
   border: 1px solid var(--clr-neutral-200);
@@ -430,9 +482,23 @@ header {
     gap: 0.5rem;
     margin-top: 0.5rem;
 
+    /* author avatar, circle */
     .avatar {
-      max-width: 4rem;
-      border-radius: 2rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+    }
+    
+    /* author name and time */
+    a {
+        color: var(--clr-accent); /* link color */
+        text-decoration: none;
+        font-size: var(--fs-300); /* slightly smaller font size */
+    }
+
+    time {
+        font-size: var(--fs-200); /* smaller font size for time */
+        color: var(--clr-neutral-400);
     }
   }
 
@@ -446,21 +512,35 @@ header {
 
   /* individual tags inside the tags list */
   .tags>li {
-    background-color: var(--clr-fragrant);
     color: var(--clr-primary-light-1);
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
-    font-size: var(--fs-200);
+    font-size: var(--fs-100);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
   }
-
+  
+  /* tag color variants - lets use the clr variable namesa as classes */
+  .tag-flower { background-color: var(--clr-flower); }
+  .tag-edible { background-color: var(--clr-edible); }
+  .tag-green { background-color: var(--clr-green); }
+  .tag-sunloving { background-color: var(--clr-sunloving); }
+  .tag-easy { background-color: var(--clr-easy); }
+  .tag-decorative { background-color: var(--clr-decorative); }
+  .tag-colorful { background-color: var(--clr-colorful); }
+  .tag-robust { background-color: var(--clr-robust); }
+  .tag-fast { background-color: var(--clr-fast); }
+  .tag-air { background-color: var(--clr-air); }
 }
 
+/* Section headings (all of them) */
 section>h2 {
   font-size: var(--fs-700);
   text-align: center;
   margin: 1rem 1rem 2rem; /* top/right/bottom margins */
 }
 
+/* the intro paragraph under the main heading */
 .intro {
   max-inline-size: 60ch; /* limit line length */
   margin: 0 auto; /* center horizontally */
@@ -468,45 +548,76 @@ section>h2 {
   text-align: center;
 }
 
+/* page footer styleing + footer links */
 footer {
   padding-top: 2rem; /* top padding */
-  margin-top: 2rem; /* top margin */
-  border-top: 1px solid var(--clr-neutral-200);
-  background-color: var(--clr-accent);
-  color: var(--clr-primary-light-1);
+  padding-bottom: 4rem;
+  margin-top: 4rem; /* top margin */
+  background-color: var(--clr-accent); /* accent bg */
+  color: var(--clr-primary-light-1); /* light text on accent bg */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
 
+  /* left side of the footer */
   .footer-left {
+      /* align to the start */
+      justify-self: start;
+
+      h2 {
+          font-size: var(--fs-700);
+          margin-block-start: 0;
+          margin-block-end: 2rem;
+      }
+      
+      p {
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+      }
+      
+      a {
+          color: var(--clr-primary-light-1);
+          text-decoration: none;
+          padding: 0;
+          font-weight: var(--fw-regular);
+          
+          &:hover {
+              text-decoration: underline;
+          }
+      }
   }
   
+  /* right side of the footer */
   .footer-right {
-  }
-
-  h2 {
-    font-size: var(--fs-500);
-    margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: var(--fs-400);
-  }
-
-  ul {
-    display: grid;
-    grid-auto-flow: row;
-  }
-
-  a {
-    display: inline-block;
-    padding: 1rem;
-    font-size: var(--fs-400);
-    font-weight: var(--fw-600);
+      /* align to the end (right) */
+      justify-self: end;
+      
+      /* list of links in the footer */
+      ul {
+        display: grid;
+        grid-auto-flow: row; /* vertical list */
+        text-align: right;
+      }
+    
+      a {
+        display: inline-block;
+        padding: 1rem;
+        font-weight: var(--fw-regular);
+        color: var(--clr-primary-light-1);
+        text-decoration: none;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+      }
   }
 
   svg {
     stroke: var(--clr-primary-light-1);
-    fill: none;
+    fill: var(--clr-primary-light-1);
+    width: 1rem;
+    height: 1rem;
   }
 }
 
