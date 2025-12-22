@@ -190,6 +190,76 @@ body {
   margin-block-start: var(--flow-space-lg);
 }
 
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 10rem;
+  background-color: var(--clr-neutral-100);
+
+  .newsletter-content {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    max-width: 50ch;
+  }
+
+  input[type="email"] {
+    flex: 1; /* take up all available space */
+    padding: 0.75rem 1rem; /* vertical and horizontal padding */
+    border: 1px solid var(--clr-neutral-400); /* border */
+    border-right: none; /* remove right border to merge with button */
+    border-radius: 2rem 0 0 2rem;
+    font-size: var(--fs-400);
+    background-color: var(--clr-neutral-200); /* input background */
+    color: var(--clr-primary-dark); /* input text color */
+
+    &:focus { /* focus styles */
+      outline: none;
+      border-color: var(--clr-accent);
+    }
+  }
+
+  button {
+    padding: 0.75rem 2rem;
+    background-color: var(--clr-accent); /* button background */
+    color: var(--clr-primary-light-1); /* button text color */
+    border: none;
+    border-radius: 0 2rem 2rem 0; /* rounded corners on the right side */
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+    cursor: pointer;
+    white-space: nowrap; /* prevent text wrapping */
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--clr-green-800);
+    }
+  }
+
+  .newsletter-image {
+    width: 15rem;
+    height: 15rem;
+    background-color: var(--clr-accent);
+    border-radius: 50%; /* make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    svg {
+      max-width: 8rem;
+      max-height: 8rem;
+      fill: var(--clr-primary-light-1);
+      stroke: var(--clr-primary-light-1);
+    }
+  }
+}
+
 .image-grid {
   display: grid;
   background-color: var(--clr-neutral-100);
@@ -255,6 +325,8 @@ body {
   display: grid;
   border: 1px solid var(--clr-neutral-200);
   background-color: var(--clr-neutral-100);
+  box-shadow: var(--border-shadow);
+  padding-block-end: 1rem;
 
   /* padding for all content */
   /* maybe i should use :not() instead here, and exclude only img? */
