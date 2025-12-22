@@ -190,6 +190,45 @@ body {
   margin-block-start: var(--flow-space-lg);
 }
 
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.plants-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.plant-card {
+  display: grid;
+  border: 1px solid red;
+
+  /* Each card has a initial image at the top */
+
+  >img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  /* and an additional svg on top of it */
+  >svg {
+    width: 5rem;
+    height: 5rem;
+    margin-inline: auto;
+  }
+  /* both the image and svg span the entire grid area of the plant-card */
+  img, svg {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  .avatar {
+    max-width: 4rem;
+    border-radius: 2rem;
+  }
+}
+
 /*
 See these for more info:
 https://www.youtube.com/watch?v=c13gpBrnGEw
