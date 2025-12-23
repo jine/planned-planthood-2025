@@ -455,7 +455,7 @@ body {
 
   /* this is kinda ugly, but i want to make sure that the tags and h3 have a minimum height, so that cards with few tags or short titles dont end up too small */
   .tags {
-    min-height: 3rem;
+    min-height: 4rem;
   }
 
   h3 {
@@ -494,11 +494,13 @@ body {
   .tags li {
     display: inline-block;
     gap: calc(var(--spacing-base) / 4); /* space between tags */
+    margin-bottom: calc(var(--spacing-base) / 4); /* space between tags */
 
     /* each tag as a link */
     > a {
       color: var(--clr-primary-light-1);
-      padding: 0.25rem var(--spacing-base);
+      padding: 0.25rem 0.5rem;
+      line-height: 1rem;
       border-radius: 1rem;
       font-size: var(--fs-100);
       font-weight: var(--fw-bold);
