@@ -298,12 +298,10 @@ body {
   margin: 2rem 0;
   
   .content {
-    h2 {
+    align-content: center; /* center content in ending vertically */
+
+    h2, p {
         margin-bottom: 1rem;
-    }
-    
-    p {
-        margin-bottom: 2rem;
     }
 
     /* link is the last child in this content div */
@@ -462,6 +460,7 @@ body {
         color: var(--clr-accent); /* link color */
         text-decoration: none;
         font-size: var(--fs-300); /* slightly smaller font size */
+        font-weight: var(--fw-semi-bold);
     }
 
     time {
@@ -487,7 +486,7 @@ body {
     text-transform: uppercase;
   }
   
-  /* tag color variants - lets use the clr variable namesa as classes */
+  /* tag color variants - lets use the clr variable names as classes */
   .tag-flower { background-color: var(--clr-flower); }
   .tag-edible { background-color: var(--clr-edible); }
   .tag-green { background-color: var(--clr-green); }
