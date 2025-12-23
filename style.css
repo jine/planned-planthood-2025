@@ -243,7 +243,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* two equal columns */
   align-items: center;
-  margin: 2rem 8rem;
+  margin: 2rem 4rem; /* margins */
 
   .content {
     text-align: left; /* center elements in content */
@@ -299,12 +299,13 @@ body {
   display: grid; /* grid layout */
   grid-template-columns: repeat(2, 1fr); /* two equal columns */
   gap: 2rem; /* space between columns */
-  margin: 2rem 8rem; /* margins */
+  margin: 2rem 0; /* margins */
   
   .content {
     display: flex; /* flexbox for content */
     flex-direction: column; /* stack content vertically */
     justify-content: center; /* center content in ending vertically */
+    margin-right: 8rem; /* space to the right */
 
     h2, p {
         margin-bottom: var(--spacing-base);
@@ -727,6 +728,26 @@ because the nesting selector cannot represent pseudo-elements. */
     }
   }
 
+  .newsletter {
+    margin: 2rem; /* reduce margins */
+    .content {
+      text-align: center;
+    }
+  }
+
+  .ending {
+    margin: 2rem; /* reduce margins */
+    .content {
+      margin-right: 0; /* remove right margin */
+      align-items: center; /* center content */
+      text-align: center; /* center text */
+      
+      .btn {
+        align-self: center; /* center button */
+      }
+    }
+  }
+
 }
 
 /* MOBILE Media query for smaller screens (up to 600px) */
@@ -761,6 +782,7 @@ because the nesting selector cannot represent pseudo-elements. */
     grid-template-columns: 1fr; /* single column */
     
     .content {
+      text-align: center;
       margin-bottom: 1.5rem; /* space below content */
     }
 
