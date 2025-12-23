@@ -658,3 +658,89 @@ footer > .footer-right {
   white-space: nowrap;
   width: 1px;
 }
+
+ /* hidden by default */
+.hamburger-menu {
+  display: none;
+}
+
+.icon-menu {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  stroke: var(--clr-accent);
+  cursor: pointer;
+}
+
+/* media query for smaller screens */
+@media (max-width: 600px) {
+
+  .site-header .main-navigation {
+    /* hide the main navigation */
+    ul {
+      display: none;
+    }
+    
+    .hamburger-menu {
+      display: block;
+    }
+  }
+
+  /* image grid to 2 columns */
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+    grid-template-rows: none;
+
+    /* all images to auto placement, resetting whats done before */
+    img:nth-child(n) {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+
+  /* newsletter section to single column */
+  .newsletter {
+    grid-template-columns: 1fr; /* single column */
+    
+    .content {
+      margin-bottom: 1.5rem; /* space below content */
+    }
+
+    .image {
+      order: -1; /* move image to top */
+      margin-bottom: var(--spacing-base);
+    }
+  }
+
+  .plant-card {
+     /* remove min-height on tags & h3*/
+    .tags, h3 {
+      min-height: auto;
+    }
+    /* make plant cards stack vertically on small screens */
+    grid-template-columns: 1fr; /* single column */
+  }
+
+  /* newsletter section to single column */
+  .ending {
+    grid-template-columns: 1fr; /* single column */
+    
+    .content {
+      align-items: center; /* center content */
+      text-align: center; /* center text */
+      
+      .btn {
+        align-self: center; /* center button */
+      }
+    }
+  }
+
+  .footer {
+    grid-template-columns: 1fr; /* single column */
+    text-align: left; /* center text */
+
+    /* hide navigation links in footer on small screens */
+    .footer-navigation {
+      display: none;
+    }
+}
