@@ -411,16 +411,42 @@ body {
 
 /* individual plant card styles */
 .plant-card {
-  display: grid;
+  display: flex;
+  flex-direction: column; /* stack content vertically */
   border: 1px solid var(--clr-primary-light-2);
   background-color: var(--clr-primary-light-1);
   box-shadow: var(--border-shadow);
   padding-block-end: var(--spacing-base);
 
+
+  /***** content inside each plant card *****/
+  /* make the entire upper part of the card a link */
   a {
     color: inherit; /* inherit text color */
     text-decoration: none; /* remove underline */
-    display: grid;
+    display: grid; /* make links into grids, so i can position img/svg ontop easy */
+    
+    /* Each card has a initial image at the top */
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    /* and an additional svg on top of it */
+    .watermark {
+      align-self: center; /* center vertically */
+      justify-self: center; /* center horizontally */
+      height: 8rem;
+      width: 8rem;
+      opacity: 0.4; /* make it a bit transparent */
+    }
+    
+    /* both the image and svg span the entire grid area of the plant-card */
+    img, svg {
+      grid-column: 1 / -1;
+      /*grid-row 1/ -1;*/
+      grid-row: 1 / 2; /* first row only */
+    }
   }
 
   /* padding for all content */
@@ -429,55 +455,29 @@ body {
     padding: 0.5rem 1rem 0;
   }
 
-  time { display: block; }
-
-  /* Each card has a initial image at the top */
-  img {
-    width: 100%;
-    object-fit: cover;
-  }
-
-  /* and an additional svg on top of it */
-  .watermark {
-    align-self: center; /* center vertically */
-    justify-self: center; /* center horizontally */
-    height: 8rem;
-    width: 8rem;
-    opacity: 0.4; /* make it a bit transparent */
-  }
-
-  /* both the image and svg span the entire grid area of the plant-card */
-  img, svg {
-    grid-column: 1 / -1;
-    /*grid-row 1/ -1;*/
-    grid-row: 1 / 2; /* first row only */
-  }
-
   /* author info container */
   .author-info {
     display: flex;
-    align-items: center;
-    gap: calc(var(--spacing-base) / 2);
-    margin-top: calc(var(--spacing-base) / 2);
+    gap: var(--spacing-base);
 
-    /* author avatar, circle */
+    /* author avatar as circle */
     .avatar {
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
     }
-    
-    /* author name and time */
+    /* author name & link  */
     a {
         color: var(--clr-accent); /* link color */
-        text-decoration: none;
         font-size: var(--fs-300); /* slightly smaller font size */
         font-weight: var(--fw-semi-bold);
+        text-decoration: none;
     }
-
+    /* publication time */
     time {
-        font-size: var(--fs-200); /* smaller font size for time */
-        color: var(--clr-primary);
+      display: block;
+      font-size: var(--fs-200); /* smaller font size for time */
+      color: var(--clr-primary);
     }
   }
 
