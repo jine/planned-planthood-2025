@@ -105,6 +105,7 @@ main {
   /* Font sizes definitions */
   --fs-100: 0.625rem;
   --fs-200: 0.75rem;
+  --fs-300: 0.875rem;  /* Added font-size small */
   --fs-400: 1rem;
   --fs-500: 1.25rem;
   --fs-600: 1.5rem;
@@ -121,6 +122,7 @@ main {
   /* theme color assignments */
   --clr-accent: var(--clr-green-400);
   --clr-accent-light-1: var(--clr-green-100);
+  --clr-accent-dark: var(--clr-green-800);
 
   --clr-primary-light-1: var(--clr-neutral-100);
   --clr-primary-light-2: var(--clr-neutral-200);
@@ -130,6 +132,7 @@ main {
   --clr-primary-dark: var(--clr-neutral-800);
 
   /* Font weights assignments */
+  --fw-small: var(--fw-300); /* Added */
   --fw-regular: var(--fw-400);
   --fw-medium: var(--fw-500);
   --fw-semi-bold: var(--fw-600);
@@ -245,26 +248,29 @@ body {
   margin: 2rem 0;
 
   .content {
-    text-align: center;
+    text-align: center; /* center elements in content */
+
     > h2 {
       margin-bottom: 1.5rem;
     }
   }
 
+  /* input container to wrap input and give it border/radius */
   .input-container {
     display: inline-block;
     border: 1px solid var(--clr-neutral-300);
     border-radius: 2rem;
   }
 
+  /* email input field */
   input[type="email"] {
-    padding: 0.75rem 1rem;
-    border: 0;
+    border: 0; /* remove default border */
+    outline: none; /* remove default outline */
+    padding: 0.75rem var(--spacing-base);
     font-size: var(--fs-400);
-    background-color: var(--clr-neutral-100);
+    background-color: var(--clr-primary-light-1);
     color: var(--clr-primary-dark);
     border-radius: 2rem; /* i need to round the corness here too */
-
   }
 
 }
@@ -298,17 +304,17 @@ body {
   margin: 2rem 0;
   
   .content {
-    align-content: center; /* center content in ending vertically */
+    display: flex; /* flexbox for content */
+    flex-direction: column; /* stack content vertically */
+    justify-content: center; /* center content in ending vertically */
 
     h2, p {
-        margin-bottom: 1rem;
+        margin-bottom: var(--spacing-base);
     }
 
-    /* link is the last child in this content div */
-    /* could also use .btn or a selector) */
-    & :last-child{
-      /* HOW THE FUCK DO I FLOAT JUST ONE ELEMENT TO THE RIGHT? */
-      float: right;
+    /* button in ending */
+    .btn {
+      align-self: end; /* align button to the right */
     }
   }
 }
@@ -335,7 +341,7 @@ body {
 
     &:hover,
     &:focus-visible {
-        background-color: var(--clr-green-800);
+        background-color: var(--clr-accent-dark);
     }
     
 }
@@ -343,9 +349,9 @@ body {
 /* Image grid */
 .image-grid {
   display: grid;
-  background-color: var(--clr-neutral-100);
-  border: 1px solid var(--clr-neutral-200);
-  padding: 1rem; /* outer padding */
+  background-color: var(--clr-primary-light-1);
+  border: 1px solid var(--clr-primary-light-2);
+  padding: var(--spacing-base); /* outer padding */
   box-sizing: border-box;
 
   /* we need a media-queries OR auto-fit/minmax or similar here to make it responsive */
@@ -400,16 +406,22 @@ body {
 .plants-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1rem;
+  gap: var(--spacing-base);
 }
 
 /* individual plant card styles */
 .plant-card {
   display: grid;
-  border: 1px solid var(--clr-neutral-200);
-  background-color: var(--clr-neutral-100);
+  border: 1px solid var(--clr-primary-light-2);
+  background-color: var(--clr-primary-light-1);
   box-shadow: var(--border-shadow);
-  padding-block-end: 1rem;
+  padding-block-end: var(--spacing-base);
+
+  a {
+    color: inherit; /* inherit text color */
+    text-decoration: none; /* remove underline */
+    display: grid;
+  }
 
   /* padding for all content */
   /* maybe i should use :not() instead here, and exclude only img? */
@@ -420,33 +432,33 @@ body {
   time { display: block; }
 
   /* Each card has a initial image at the top */
-  > img {
+  img {
     width: 100%;
-    height: auto;
     object-fit: cover;
   }
 
   /* and an additional svg on top of it */
-  > svg {
-    width: 5rem;
-    height: 5rem;
-    margin-inline: auto; /* center horizontally */
+  .watermark {
     align-self: center; /* center vertically */
+    justify-self: center; /* center horizontally */
+    height: 8rem;
+    width: 8rem;
     opacity: 0.4; /* make it a bit transparent */
   }
 
   /* both the image and svg span the entire grid area of the plant-card */
   img, svg {
     grid-column: 1 / -1;
-    grid-row: 1 / -1;
+    /*grid-row 1/ -1;*/
+    grid-row: 1 / 2; /* first row only */
   }
 
   /* author info container */
   .author-info {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    gap: calc(var(--spacing-base) / 2);
+    margin-top: calc(var(--spacing-base) / 2);
 
     /* author avatar, circle */
     .avatar {
@@ -465,25 +477,24 @@ body {
 
     time {
         font-size: var(--fs-200); /* smaller font size for time */
-        color: var(--clr-neutral-400);
+        color: var(--clr-primary);
     }
   }
 
   /* tags for each plant */
-  .tags {
-    display: flex;
-    gap: 0.25rem;
-    flex-wrap: wrap;
-  }
+  .tags li {
+    display: inline-block;
+    gap: calc(var(--spacing-base) / 4); /* space between tags */
 
-  /* individual tags inside the tags list */
-  .tags>li {
-    color: var(--clr-primary-light-1);
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: var(--fs-100);
-    font-weight: var(--fw-bold);
-    text-transform: uppercase;
+    /* each tag as a link */
+    > a {
+      color: var(--clr-primary-light-1);
+      padding: 0.25rem var(--spacing-base);
+      border-radius: 1rem;
+      font-size: var(--fs-100);
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
+    }
   }
   
   /* tag color variants - lets use the clr variable names as classes */
