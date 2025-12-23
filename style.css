@@ -241,12 +241,12 @@ body {
 
 .newsletter {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr); /* two equal columns */
   align-items: center;
-  margin: 2rem 0;
+  margin: 2rem 8rem;
 
   .content {
-    text-align: center; /* center elements in content */
+    text-align: left; /* center elements in content */
 
     > h2 {
       margin-bottom: 1.5rem;
@@ -297,9 +297,9 @@ body {
 /* ending section is the bottom "hero", looks like newsletter but its icon is to the left */
 .ending {
   display: grid; /* grid layout */
-  grid-template-columns: 1fr 1fr; /* two equal columns */
+  grid-template-columns: repeat(2, 1fr); /* two equal columns */
   gap: 2rem; /* space between columns */
-  margin: 2rem 0;
+  margin: 2rem 8rem; /* margins */
   
   .content {
     display: flex; /* flexbox for content */
