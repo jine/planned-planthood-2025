@@ -571,6 +571,8 @@ section>h2 {
   /* right side of the footer */
   .footer-navigation {
 
+      justify-self: end; /* align to the right */
+      
       ul {
         grid-auto-flow: row; /* vertical list */
       }
