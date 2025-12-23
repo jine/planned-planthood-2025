@@ -417,6 +417,10 @@ body {
   box-shadow: var(--border-shadow);
   padding-block-end: var(--spacing-base);
 
+  h3 {
+    height: 2rem; /* fixed height to align cards */
+  }
+
   a {
     color: inherit; /* inherit text color */
     text-decoration: none; /* remove underline */
