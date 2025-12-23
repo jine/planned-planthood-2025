@@ -200,8 +200,6 @@ body {
   background-color: var(--clr-primary-light-1);
 
   .logo {
-    font-size: var(--fs-800);
-    font-weight: var(--fw-900);
     color: var(--clr-primary-dark);
 
     .logo-icon {
@@ -409,17 +407,16 @@ body {
   gap: var(--spacing-base);
 }
 
-/* individual plant card styles */
+/***** content inside each plant card *****/
 .plant-card {
   display: flex;
-  flex-direction: column; /* stack content vertically */
+  flex-direction: column;
   border: 1px solid var(--clr-primary-light-2);
   background-color: var(--clr-primary-light-1);
   box-shadow: var(--border-shadow);
   padding-block-end: var(--spacing-base);
 
 
-  /***** content inside each plant card *****/
   /* make the entire upper part of the card a link */
   a {
     color: inherit; /* inherit text color */
@@ -447,6 +444,7 @@ body {
       /*grid-row 1/ -1;*/
       grid-row: 1 / 2; /* first row only */
     }
+
   }
 
   /* padding for all content */
@@ -455,8 +453,18 @@ body {
     padding: 0.5rem 1rem 0;
   }
 
+  /* this is kinda ugly, but i want to make sure that the tags and h3 have a minimum height, so that cards with few tags or short titles dont end up too small */
+  .tags {
+    min-height: 3rem;
+  }
+
+  h3 {
+    min-height: 2rem;
+  }
+
   /* author info container */
   .author-info {
+    margin-top: auto; /* push to bottom of card */
     display: flex;
     gap: var(--spacing-base);
 
