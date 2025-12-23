@@ -238,68 +238,40 @@ body {
   }
 }
 
-.newsletter-section {
+.newsletter {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: var(--clr-neutral-100);
+  align-items: center;
+  margin: 2rem 0;
 
   .content {
-    padding: 4rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  h2 {
-    font-size: var(--fs-600);
-    margin-bottom: 2rem;
     text-align: center;
+    > h2 {
+      margin-bottom: 1.5rem;
+    }
   }
 
-  .newsletter-form {
-    display: flex;
-    flex-direction: row;
-    max-width: 100%;
-    margin: 0;
+  .input-container {
+    display: inline-block;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 2rem;
   }
 
   input[type="email"] {
-    flex: 1; /* take up all available space */
-    padding: 0.75rem 1rem; /* vertical and horizontal padding */
-    border: 1px solid var(--clr-neutral-400); /* border */
-    border-right: none; /* remove right border to merge with button */
-    border-radius: 2rem 0 0 2rem;
+    padding: 0.75rem 1rem;
+    border: 0;
     font-size: var(--fs-400);
-    background-color: var(--clr-neutral-100); /* input background */
-    color: var(--clr-primary-dark); /* input text color */
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-primary-dark);
+    border-radius: 2rem; /* i need to round the corness here too */
 
-    &:focus { /* focus styles */
-      outline: none;
-      border-color: var(--clr-accent);
-    }
   }
 
-  button {
-    padding: 0.75rem 2rem;
-    background-color: var(--clr-accent); /* button background */
-    color: var(--clr-primary-light-1); /* button text color */
-    border: none;
-    border-radius: 0 2rem 2rem 0; /* rounded corners on the right side */
-    font-size: var(--fs-400);
-    font-weight: var(--fw-semi-bold);
-    cursor: pointer;
-    white-space: nowrap; /* prevent text wrapping */
-
-    &:hover,
-    &:focus-visible {
-      background-color: var(--clr-green-800);
-    }
-  }
 }
 
 /* shared styles for newsletter and ending section "images" */
-.newsletter-section .image,
-.ending-section .image {
+.newsletter .image,
+.ending .image {
   width: 15rem;
   height: 15rem;
   background-color: var(--clr-accent);
@@ -319,17 +291,13 @@ body {
 }
 
 /* ending section is the bottom "hero", looks like newsletter but its icon is to the left */
-.ending-section {
+.ending {
   display: grid; /* grid layout */
   grid-template-columns: 1fr 1fr; /* two equal columns */
   gap: 2rem; /* space between columns */
+  margin: 2rem 0;
   
-  .ending-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ending-right {
+  .content {
     h2 {
         margin-bottom: 1rem;
     }
@@ -337,28 +305,41 @@ body {
     p {
         margin-bottom: 2rem;
     }
+
+    /* link is the last child in this content div */
+    /* could also use .btn or a selector) */
+    & :last-child{
+      /* HOW THE FUCK DO I FLOAT JUST ONE ELEMENT TO THE RIGHT? */
+      float: right;
+    }
   }
 }
 
 /* Button styles */
 .btn {
-  display: inline-block; /* make it inline-block */
-  padding: 0.5rem 1rem; /* vertical and horizontal padding */
-  border-radius: 2rem;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semi-bold);
+    border-radius: 2rem;
+    padding: 0.35rem 1.25rem;
+    margin: 0.35rem;
+    cursor: pointer;
+    border: 0;
+
+    &:hover,
+    &:focus-visible {
+        text-decoration: none;
+    }
 }
 
 .btn-green {
     background-color: var(--clr-accent);
     color: var(--clr-primary-light-1);
-    
+
     &:hover,
     &:focus-visible {
         background-color: var(--clr-green-800);
-        text-decoration: none;
     }
+    
 }
 
 /* Image grid */
@@ -529,54 +510,44 @@ section>h2 {
 /* the intro paragraph under the main heading */
 .intro {
   max-inline-size: 60ch; /* limit line length */
-  margin: 0 auto; /* center horizontally */
+  margin: 2rem auto 1rem; /* center horizontally */
   font-size: var(--fs-400);
   text-align: center;
+
+  >h1 {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem; /* space below h1 */
+  }
 }
 
 /* page footer styleing + footer links */
-.footer-section {
+.footer {
   padding-top: 2rem; /* top padding */
-  padding-bottom: 4rem;
-  margin-top: 4rem; /* top margin */
+  padding-bottom: 1rem;
   color: var(--clr-primary-light-1); /* light text on accent bg */
   display: grid;
   grid-template-columns: 1fr 1fr; /* two equal columns */
 
-  /* left side of the footer */
-  .footer-links {
-      h2 {
-          font-size: var(--fs-700);
-          margin-block-start: 0;
-          margin-block-end: 2rem;
-      }
-      
-      p {
-          margin-bottom: 1rem;
-          max-width: 70ch;
-      }
-      
-      a {
-          color: var(--clr-primary-light-1);
-          text-decoration: none;
-          padding: 0;
-          font-weight: var(--fw-regular);
-          
-          &:hover {
-              text-decoration: underline;
-          }
-      }
+  h2 {
+    margin-bottom: 2rem; /* space below h2 and text footer */
   }
-  
+
+  p {
+    margin-bottom: 1rem; /* space below paragraphs in footer */
+
+    a {
+      color: var(--clr-primary-light-1);
+      font-weight: var(--fw-semi-bold);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   /* right side of the footer */
   .footer-navigation {
-
       justify-self: end; /* align to the right */
-      
-      ul {
-        grid-auto-flow: row; /* vertical list */
-      }
-    
+
       a {
         display: inline-block;
         padding: 1rem;
@@ -591,7 +562,7 @@ section>h2 {
   }
 
   /* svg icons in the footer */
-  svg {
+  .icon {
     display: inline-block; /* inline block */
     stroke: var(--clr-primary-light-1); /* light stroke */
     fill: var(--clr-primary-light-1); /* light fill */
@@ -599,6 +570,11 @@ section>h2 {
     height: 1rem;
   }
 
+}
+
+/* add margin above footer if footer is direct child of a div */
+div:has(> footer) {
+  margin-top: 4rem; /* space above footer */
 }
 
 /*
