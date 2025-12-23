@@ -441,7 +441,7 @@ body {
   time { display: block; }
 
   /* Each card has a initial image at the top */
-  >img {
+  > img {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -494,7 +494,6 @@ body {
     display: flex;
     gap: 0.25rem;
     flex-wrap: wrap;
-    margin-top: 0.5rem;
   }
 
   /* individual tags inside the tags list */
@@ -571,7 +570,7 @@ section>h2 {
   
   /* right side of the footer */
   .footer-navigation {
-      
+
       ul {
         grid-auto-flow: row; /* vertical list */
       }
