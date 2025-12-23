@@ -354,7 +354,6 @@ body {
 
   /* we need a media-queries OR auto-fit/minmax or similar here to make it responsive */
   grid-template-columns: repeat(6, 1fr); /* 6 equal columns */
-  grid-template-rows: repeat(2, 20rem); /* 2 equal rows of 20rem height */
 
   /* default image styles */
   img {
@@ -423,12 +422,6 @@ body {
     text-decoration: none; /* remove underline */
     display: grid; /* make links into grids, so i can position img/svg ontop easy */
     
-    /* Each card has a initial image at the top */
-    img {
-      width: 100%;
-      object-fit: cover;
-    }
-    
     /* and an additional svg on top of it */
     .watermark {
       align-self: center; /* center vertically */
@@ -439,10 +432,10 @@ body {
     }
     
     /* both the image and svg span the entire grid area of the plant-card */
+    /* found this on stackoverflow previously, cant find it again */
     img, svg {
       grid-column: 1 / -1;
-      /*grid-row 1/ -1;*/
-      grid-row: 1 / 2; /* first row only */
+      grid-row: 1 / -1;
     }
 
   }
@@ -496,7 +489,7 @@ body {
     gap: calc(var(--spacing-base) / 4); /* space between tags */
     margin-bottom: calc(var(--spacing-base) / 4); /* space between tags */
 
-    /* each tag as a link */
+    /* each tag is a link */
     > a {
       color: var(--clr-primary-light-1);
       padding: 0.25rem 0.5rem;
@@ -631,14 +624,6 @@ https://www.youtube.com/watch?v=cf-J4ffMBfo
   grid-column: fullwidth;
 }
 
-/* override fullwidth for ending-section and footer to use their own 2-column grids */
-.ending-section > .ending-left,
-.ending-section > .ending-right,
-footer > .footer-left,
-footer > .footer-right {
-  grid-column: auto;
-}
-
 /*** Utilities ***/
 
 .bg-light {
@@ -658,6 +643,8 @@ footer > .footer-right {
   white-space: nowrap;
   width: 1px;
 }
+
+/**** Hamburger menu styles ****/
 
  /* hamburger button hidden by default (Desktop-first) */
 .hamburger-button {
