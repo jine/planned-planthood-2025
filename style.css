@@ -277,9 +277,12 @@ body {
        By explicitly setting left: auto, you override this default centering behavior, allowing right-positioning
        to work properly and align the menu to the right side of the screen. */
     left: auto; /* See above, overrides dialog default */
+
+    /* AI-answer: The issue might be that dialog elements have default max-width/max-height constraints */
+    max-height: none; /* override dialog default max-height */
     
     height: 100dvh; /* Mobile: full viewport inc URL bar area */
-    height: 100vh; /* fallback: full viewport height */
+    height: 100vh; /* Fallback: full viewport height */
 
     background-color: var(--clr-primary-light-1); /* light bg */
     z-index: 1000; /* on top of all content */
@@ -633,7 +636,7 @@ section>h2 {
   }
 
   p {
-    margin-bottom: 1rem; /* space below paragraphs in footer */
+    margin-bottom: var(--spacing-base); /* space below paragraphs in footer */
 
     a {
       color: var(--clr-primary-light-1);
@@ -882,13 +885,10 @@ because the nesting selector cannot represent pseudo-elements. */
   }
 }
 
-
-
 /* TINY Media query for TINY screens (up to 400px) */
 /* this is totally optional, but i want to make some font sizes and images smaller on very small screens */
 /* we could use clamp() for font sizes too, but this is just an example of media query usage */
 @media (max-width: 400px) {
-
   .image-grid {
     grid-template-columns: 1fr; /* single column */
   }
@@ -914,5 +914,4 @@ because the nesting selector cannot represent pseudo-elements. */
       max-height: 5rem;
     }
   }
-
 }
