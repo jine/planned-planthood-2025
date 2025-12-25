@@ -171,6 +171,8 @@ a {
   /* default link styles */
   text-decoration: none;
   color: var(--clr-accent);
+  font-weight: var(--fw-semi-bold);
+  cursor: pointer;
 
   /* default underline on hover / focus-visible */
   &:hover,
@@ -181,6 +183,9 @@ a {
 
 body {
   font-family: var(--font-base);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+
   background-color: var(--clr-accent-light-1);
   color: var(--clr-primary-dark);
 }
@@ -206,7 +211,7 @@ body {
 
     .logo-icon {
       max-width: 2rem;
-      height: auto;
+      height: auto; /* maintain aspect ratio */
       display: inline-block;
       stroke: var(--clr-accent);  /* logo stroke color */
     }
@@ -216,8 +221,8 @@ body {
       max-inline-size: 10ch; /* max 10ch per line = wrap to two lines */
       text-transform: uppercase;
       line-height: 0.8; /* tighten line height for two-line version */
-      font-size: var(--fs-base);
-      font-weight: var(--fw-semi-bold); 
+      font-size: var(--fs-base); /* ovveride h2 to base font size */
+      font-weight: var(--fw-semi-bold);
     }
   }
 
@@ -226,12 +231,12 @@ body {
     align-items: center; /* center vertically */
     justify-content: end;
     
+    /* menu list, parent */
     ul {
       display: flex;
     }
 
     li>a {
-      font-size: var(--fs-400);
       font-weight: var(--fw-semi-bold);
       text-transform: uppercase;
       padding: 0.5rem 1.5rem;
@@ -305,16 +310,7 @@ body {
 
       /* menu links inside dialog */
       li>a {
-        font-size: var(--fs-400);
-        font-weight: var(--fw-semi-bold);
         text-transform: uppercase;
-        color: var(--clr-accent);
-
-        &:hover,
-        &:focus-visible {
-          text-decoration: underline;
-          color: var(--clr-primary-light-1);
-        }
       }
     }
 
@@ -332,7 +328,7 @@ body {
   .content {
     text-align: left; /* center elements in content */
 
-    > h2 {
+    >h2 {
       margin-bottom: 1.5rem;
     }
   }
@@ -349,8 +345,7 @@ body {
     border: 0; /* remove default border */
     outline: none; /* remove default outline */
     padding: 0.75rem var(--spacing-base);
-    font-size: var(--fs-400);
-    background-color: var(--clr-primary-light-1);
+    background-color: transparent;
     color: var(--clr-primary-dark);
     border-radius: 2rem; /* i need to round the corness here too */
   }
@@ -404,7 +399,6 @@ body {
 
 /* Button styles */
 .btn {
-    font-size: var(--fs-400);
     font-weight: var(--fw-semi-bold);
     border-radius: 2rem;
     padding: 0.35rem 1.25rem;
@@ -507,10 +501,13 @@ body {
 
   /* make the entire upper part of the card a link */
   a {
-    color: inherit; /* inherit text color */
-    text-decoration: none; /* remove underline */
     display: grid; /* make links into grids, so i can position img/svg ontop easy */
     
+    /* override h3 color inside link */
+    h3 {
+      color: var(--clr-primary-dark)
+    }
+
     /* and an additional svg on top of it */
     .watermark {
       align-self: center; /* center vertically */
@@ -562,11 +559,9 @@ body {
         color: var(--clr-accent); /* link color */
         font-size: var(--fs-300); /* slightly smaller font size */
         font-weight: var(--fw-semi-bold);
-        text-decoration: none;
     }
     /* publication time */
     time {
-      display: block;
       font-size: var(--fs-200); /* smaller font size for time */
       color: var(--clr-primary);
     }
@@ -582,11 +577,11 @@ body {
     > a {
       color: var(--clr-primary-light-1);
       padding: 0.25rem 0.5rem;
-      line-height: 1rem;
       border-radius: 1rem;
-      font-size: var(--fs-100);
-      font-weight: var(--fw-bold);
-      text-transform: uppercase;
+      font-size: var(--fs-100); /* smaller font size for tags */
+      font-weight: var(--fw-bold); /* bold font for tags */
+      text-transform: uppercase; /* uppercase for tags */
+      text-decoration: none; /* never underline taglinks */
     }
   }
   
@@ -614,12 +609,10 @@ section>h2 {
 .intro {
   max-inline-size: 60ch; /* limit line length */
   margin: 2rem auto 1rem; /* center horizontally */
-  font-size: var(--fs-400);
   text-align: center;
 
   >h1 {
-    margin-block-start: var(--spacing-base); /* space above h1 */
-    margin-block-end: var(--spacing-base); /* space below h1 */
+    margin-block: var(--spacing-base); /* space above & below h1 */
   }
 }
 
@@ -632,19 +625,15 @@ section>h2 {
   grid-template-columns: 1fr 1fr; /* two equal columns */
 
   h2 {
-    margin-bottom: 2rem; /* space below h2 and text footer */
+    margin-block-end: 2rem; /* space below h2 and text footer */
   }
 
   p {
-    margin-bottom: var(--spacing-base); /* space below paragraphs in footer */
+    margin-block-end: var(--spacing-base); /* space below paragraphs in footer */
+  }
 
-    a {
-      color: var(--clr-primary-light-1);
-      font-weight: var(--fw-semi-bold);
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+  a {
+    color: var(--clr-primary-light-1); /* light link color */
   }
 
   /* right side of the footer */
@@ -652,15 +641,9 @@ section>h2 {
       justify-self: end; /* align to the right */
 
       a {
-        display: inline-block;
+        display: block; /* needed to respect padding/margin */
         padding: var(--spacing-base);
-        font-weight: var(--fw-regular);
-        color: var(--clr-primary-light-1);
-        text-decoration: none;
-        
-        &:hover {
-            text-decoration: underline;
-        }
+        font-weight: var(--fw-regular); /* regular weight for footer links */
       }
   }
 
@@ -856,6 +839,7 @@ because the nesting selector cannot represent pseudo-elements. */
     .tags, h3 {
       min-height: auto;
     }
+
     /* make plant cards stack vertically on small screens */
     grid-template-columns: 1fr; /* single column */
   }
