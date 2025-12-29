@@ -501,8 +501,8 @@ body {
 
 /***** content inside each plant card *****/
 .plant-card {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* flexbox for vertical layout */
+  flex-direction: column; /* stack content vertically */
   border: 1px solid var(--clr-primary-light-2);
   background-color: var(--clr-primary-light-1);
   box-shadow: var(--border-shadow);
@@ -604,7 +604,7 @@ body {
   .tag-fast { background-color: var(--clr-fast); }
   .tag-air { background-color: var(--clr-air); }
 
-  /* tag hover effect, gives a nbon-ish outer glow */
+  /* tag hover effect, gives a neon-ish outer glow */
   /* currentColor to get the color from the tag variant class */
   .tag:hover, .tag:focus-visible {
     box-shadow: 
