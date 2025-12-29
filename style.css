@@ -794,7 +794,7 @@ because the nesting selector cannot represent pseudo-elements. */
   }
 
   .ending {
-    margin: 2rem; /* reduce margins */
+    margin: 2rem 0; /* reduce margins */
     .content {
       margin-right: 0; /* remove right margin */
       align-items: center; /* center content */
