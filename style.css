@@ -190,6 +190,23 @@ body {
   color: var(--clr-primary-dark);
 }
 
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 9999;
+  background: var(--clr-primary-light-1);
+  color: var(--clr-primary-dark);
+  padding: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
 
 /*** Composition ***/
 .flow>*+* {
@@ -722,6 +739,9 @@ https://www.youtube.com/watch?v=cf-J4ffMBfo
     background-color: var(--clr-accent); /* accent bg */
 }
 
+/*
+We're using another method for visually-hidden content now, but keeping this here for reference
+*//*
 .visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -730,7 +750,7 @@ https://www.youtube.com/watch?v=cf-J4ffMBfo
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
+}*/
 
 /* Dialog element styling */
 /* from https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog */
