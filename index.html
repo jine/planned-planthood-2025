@@ -15,6 +15,7 @@
 <body>
     <!-- Accessibility Skip-link to jump to content -->
     <a href="#plants" class="skip-link">Hoppa till huvudinnehåll</a>
+    
     <main id="hem" class="flow content-grid">
         <!-- Site header -->
         <div class="fullwidth bg-light">
@@ -30,7 +31,7 @@
                         <h2 class="logo-text">Planned Planthood</h2>
                     </div>
 
-                    <div class="main-navigation">
+                    <section class="main-navigation">
                         <nav aria-label="Sidnavigation">
                             <ul role="list">
                                 <li><a href="#hem">Hem</a></li>
@@ -76,13 +77,13 @@
                                 </ul>
                             </nav>
                         </dialog>
-                    </div>
+                    </section>
             </header>
         </div>
 
         <!-- Introduction -->
-        <section class="intro">
-            <h1>Våra uppskattade växter</h1>
+        <section class="intro" aria-labelledby="intro-heading">
+            <h1 id="intro-heading">Våra uppskattade växter</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, ex vero harum recusandae et, nemo ea, non fugit sapiente sit dolore autem! Expedita illo deleniti maiores harum consequatur debitis hic.</p>
         </section>
         
@@ -98,11 +99,11 @@
         
         <!-- Newsletter section -->
         <div class="fullwidth bg-light">
-            <section class="newsletter">
+            <section class="newsletter" aria-labelledby="newsletter-title">
                 <div class="content">
-                    <h2>Anmäl dig till vårt nyhetsbrev så du inte missar en utsådd!</h2>
+                    <h2 id="newsletter-title">Anmäl dig till vårt nyhetsbrev så du inte missar en utsådd!</h2>
                     <form action="#" method="post" class="input-container">
-                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="namn@domän.se" aria-label="E-postadress">
+                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="namn@domän.se" aria-label="Ange din e-postadress">
                         <button type="submit" class="btn btn-green">Skicka</button>
                     </form>
                 </div>
@@ -128,8 +129,8 @@
         </div>
 
         <!-- Plant cards -->
-        <section id="plants">
-            <h2>Alla våra växter</h2>
+        <section id="plants" aria-labelledby="plants-title">
+            <h2 id="plants-title">Alla våra växter</h2>
             <div class="plants-container">
                 <!-- Cucumber card -->
                 <article class="plant-card">
@@ -153,7 +154,7 @@
                     <div class="author-info">
                         <a href="#coolio" aria-label="Visa Coolios plantor"><img src="https://i.pravatar.cc/300?img=1" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#coolio">Coolio</a>
+                            <a href="#coolio" rel="author">Coolio</a>
                             <time datetime="2024-04-01">2024-04-01</time>
                         </div>
                     </div>
@@ -181,7 +182,7 @@
                     <div class="author-info">
                         <a href="#anna-odlare" aria-label="Visa Anna Odlares plantor"><img src="https://i.pravatar.cc/300?img=2" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#anna-odlare">Anna Odlare</a>
+                            <a href="#anna-odlare" rel="author">Anna Odlare</a>
                             <time datetime="2024-12-05">2024-12-05</time>
                         </div>
                     </div>
@@ -210,7 +211,7 @@
                     <div class="author-info">
                         <a href="#blomsterkalle" aria-label="Visa Blomsterkalles plantor"><img src="https://i.pravatar.cc/300?img=3" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#blomsterkalle">Blomsterkalle</a>
+                            <a href="#blomsterkalle" rel="author">Blomsterkalle</a>
                             <time datetime="2024-12-03">2024-12-03</time>
                         </div>
                     </div>
@@ -238,7 +239,7 @@
                     <div class="author-info">
                         <a href="#krydd-malin" aria-label="Visa Krydd-Malins plantor"><img src="https://i.pravatar.cc/300?img=4" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#krydd-malin">Krydd-Malin</a>
+                            <a href="#krydd-malin" rel="author">Krydd-Malin</a>
                             <time datetime="2024-12-07">2024-12-07</time>
                         </div>
                     </div>
@@ -266,7 +267,7 @@
                     <div class="author-info">
                         <a href="#gronis" aria-label="Visa Gröniss plantor"><img src="https://i.pravatar.cc/300?img=5" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#gronis">Grönis</a>
+                            <a href="#gronis" rel="author">Grönis</a>
                             <time datetime="2024-12-06">2024-12-06</time>
                         </div>
                     </div>
@@ -294,7 +295,7 @@
                     <div class="author-info">
                         <a href="#naturvannen" aria-label="Visa Naturvännens plantor"><img src="https://i.pravatar.cc/300?img=6" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#naturvannen">Naturvännen</a>
+                            <a href="#naturvannen" rel="author">Naturvännen</a>
                             <time datetime="2024-12-08">2024-12-08</time>
                         </div>
                     </div>
@@ -325,7 +326,7 @@
                     <div class="author-info">
                         <a href="#solstralen" aria-label="Visa Solstrålens plantor"><img src="https://i.pravatar.cc/300?img=7" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#solstralen">Solstrålen</a>
+                            <a href="#solstralen" rel="author">Solstrålen</a>
                             <time datetime="2024-12-09">2024-12-09</time>
                         </div>
                     </div>
@@ -352,7 +353,7 @@
                     <div class="author-info">
                         <a href="#ort-lisa" aria-label="Visa Ört-Lisas plantor"><img src="https://i.pravatar.cc/300?img=8" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#ort-lisa">Ört-Lisa</a>
+                            <a href="#ort-lisa" rel="author">Ört-Lisa</a>
                             <time datetime="2024-12-10">2024-12-10</time>
                         </div>
                     </div>
@@ -379,7 +380,7 @@
                     <div class="author-info">
                         <a href="#djungel-jim" aria-label="Visa Djungel-Jims plantor"><img src="https://i.pravatar.cc/300?img=9" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#djungel-jim">Djungel-Jim</a>
+                            <a href="#djungel-jim" rel="author">Djungel-Jim</a>
                             <time datetime="2024-12-11">2024-12-11</time>
                         </div>
                     </div>
@@ -407,7 +408,7 @@
                     <div class="author-info">
                         <a href="#oken-raven" aria-label="Visa Öken-Rävens plantor"><img src="https://i.pravatar.cc/300?img=10" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#oken-raven">Öken-Räven</a>
+                            <a href="#oken-raven" rel="author">Öken-Räven</a>
                             <time datetime="2024-12-12">2024-12-12</time>
                         </div>
                     </div>
@@ -428,26 +429,26 @@
                     <ul role="list" class="tags">
                         <li><a href="#tag-blommor" class="tag tag-flower">Blommor</a></li>
                         <li><a href="#tag-lattodlat" class="tag tag-easy">Lättodlat</a></li>
+                        <li><a href="#tag-dekorativ" class="tag tag-decorative">Dekorativ</a></li>
+                        <li><a href="#tag-talig" class="tag tag-robust">Tålig</a></li>
                     </ul>
                     <a href="#ros"><h3>Ros</h3></a>
                     <p>Trädgårdens drottning, finns i många färger och former för alla smaker.</p>
                     <div class="author-info">
                         <a href="#ros-marie" aria-label="Visa Ros-Maries plantor"><img src="https://i.pravatar.cc/300?img=11" alt="" aria-hidden="true" class="avatar"></a>
                         <div class="author-details">
-                            <a href="#ros-marie">Ros-Marie</a>
+                            <a href="#ros-marie" rel="author">Ros-Marie</a>
                             <time datetime="2024-12-13">2024-12-13</time>
                         </div>
                     </div>
                 </article>
-
-
 
             </div>
         </section>
 
         <!-- Ending section -->
         <div class="fullwidth bg-light">
-            <section class="ending">
+            <section class="ending" aria-labelledby="ending-title">
                 <div class="image">
                     <svg aria-hidden="true" width="199" height="196" viewBox="0 0 199 196" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -489,7 +490,7 @@
                     </svg>
                 </div>
                 <div class="content">
-                    <h2>Våra tidigare odlingar</h2>
+                    <h2 id="ending-title">Våra tidigare odlingar</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ratione quia eos pariatur deserunt
                         veritatis. Tenetur, ipsum! Iusto delectus ipsam esse pariatur rerum eveniet nostrum, dolor distinctio
                         nam quaerat doloribus?</p>
@@ -498,7 +499,7 @@
             </section>
         </div>
     </main>
-    
+
     <!-- Footer -->
     <div class="fullwidth bg-green footer-wrapper">
         <footer class="footer">

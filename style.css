@@ -791,6 +791,8 @@ because the nesting selector cannot represent pseudo-elements. */
   }
 }
 
+/***** Responsive design with media queries *****/
+
 /* TABLET Media query for smaller screens (up to 900px) */
 @media (max-width: 900px) {
 
